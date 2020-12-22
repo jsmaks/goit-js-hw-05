@@ -1,27 +1,22 @@
-const account = {
-    owner: 'Mango',
-    balance: 24000,
-    discount: 0.1,
-    orders: ['order-1', 'order-2', 'order-3'],
-    changeDiscount(value) {
-        console.log(this);
-        this.discount = value;
+const Account = function (array) {
+    const { login, email } = array;
+    this.login = login;
+    this.email = email;
+}
 
-    },
-    showOrders() {
-        return this.orders;
-    },
-    addOrder(cost, order) {
-        this.balance -= cost;
-        this.orders.push(order);
-    },
-};
+Account.prototype.getInfo = function () {
+    console.log(this);
+}
+console.log(Account.prototype.getInfo); // function
 
-account.changeDiscount(0.15);
-console.log(account.discount); // 0.15
+const mango = new Account({
+    login: 'Mangozedog',
+    email: 'mango@dog.woof',
+});
+mango.getInfo(); // Login: Mangozedog, Email: mango@dog.woof
+const poly = new Account({
+    login: 'Poly',
+    email: 'poly@mail.com',
+});
 
-console.table(account.showOrders()); // ['order-1', 'order-2', 'order-3']
-
-account.addOrder(5000, 'order-4');
-console.log(account.balance); // 19000
-console.table(account.showOrders()); // ['order-1', 'order-2', 'order-3', 'order-4']
+poly.getInfo(); // Login: Poly, Email: poly@mail.com
