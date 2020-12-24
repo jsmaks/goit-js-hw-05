@@ -1,6 +1,7 @@
 class Car {
     static getSpecs(car) {
-        console.log(car);
+        const { maxSpeed, speed, isOn, distance, price } = car;
+        console.log(`maxSpeed: ${car.maxSpeed}, speed: ${car.speed}, isOn: ${car.isOn}, distance: ${car.distance}, price: ${car.price}`);
     }
     constructor(array) {
         const { maxSpeed, speed = 0, isOn = false, distance = 0, price } = array;
@@ -38,20 +39,18 @@ class Car {
      * не больше чем значение свойства maxSpeed
      */
     accelerate(value) {
-        this.speed = this.speed + value;
-        if (this.speed < this.maxSpeed) return this.speed;
 
-
+        if (this.speed < this.maxSpeed) {
+            return this.speed += value;
+        }
     }
-
     /*
      * Отнимает от свойства speed полученное значение,
      * при условии что результирующая скорость не меньше нуля
      */
     decelerate(value) {
-        this.speed = this.speed - value;
-        if (this.speed !== 0) {
-            return this.speed;
+        if (this.speed - value !== 0) {
+            return this.speed -= value;
         }
     }
 
@@ -60,12 +59,13 @@ class Car {
      * но только в том случае если машина заведена!
      */
     drive(hours) {
-        const result = hours * this.speed
-        this.distance += result;
-        if (this.isOn === true) { return this.distance }
+        if (this.isOn === true) {
+            const result = hours * this.speed
+            return this.distance += result;
+        }
+
     }
 }
-
 const mustang = new Car({ maxSpeed: 200, price: 2000 });
 
 mustang.turnOn();

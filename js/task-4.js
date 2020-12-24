@@ -11,13 +11,13 @@ class StringBuilder {
         return this._value += str;
     }
     prepend = function (str) {
-        this._value = str + this._value
-        return this._value;
+        this._value = str + this.value
+        return this.value;
     }
     pad = function (str) {
         this.append(str);
         this.prepend(str);
-        return (this._value);
+        return (this.value);
     }
 }
 
