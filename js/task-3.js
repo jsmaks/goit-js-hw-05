@@ -10,8 +10,10 @@ class Storage {
         this.items.push(item);
     }
     removeItem = function (item) {
-        const removeIndex = this.items.indexOf(item);
-        this.items.splice(removeIndex, 1);
+        if (this.items.includes(item) === true) {
+            const removeIndex = this.items.indexOf(item);
+            return this.items.splice(removeIndex, 1);
+        }
     }
 }
 const storage = new Storage([
