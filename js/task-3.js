@@ -10,10 +10,16 @@ class Storage {
         this.items.push(item);
     }
     removeItem = function (item) {
-        if (this.items.includes(item) === true) {
-            const removeIndex = this.items.indexOf(item);
-            return this.items.splice(removeIndex, 1);
+        const empty = [];
+        for (const arg of this.items) {
+            if (arg === item) continue;
+            empty.push(arg);
         }
+        this.items = empty;
+        // if (this.items.includes(item) === true) {
+        //     const removeIndex = this.items.indexOf(item);
+        //     return this.items.splice(removeIndex, 1);
+        // }
     }
 }
 const storage = new Storage([
