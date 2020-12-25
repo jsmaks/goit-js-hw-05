@@ -39,8 +39,8 @@ class Car {
      * не больше чем значение свойства maxSpeed
      */
     accelerate(value) {
-
-        if (this.speed < this.maxSpeed) {
+        const currentSpeed = this.speed + value;
+        if (currentSpeed < this.maxSpeed) {
             return this.speed += value;
         }
     }
@@ -63,7 +63,6 @@ class Car {
             const result = hours * this.speed
             return this.distance += result;
         }
-
     }
 }
 const mustang = new Car({ maxSpeed: 200, price: 2000 });
