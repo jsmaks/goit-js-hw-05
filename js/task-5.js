@@ -50,7 +50,7 @@ class Car {
      */
     decelerate(value) {
         const currentSpeed = this.speed - value;
-        if (currentSpeed !== 0) {
+        if (currentSpeed >= 0) {
             return this.speed -= value;
         }
     }
